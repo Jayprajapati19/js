@@ -72,11 +72,11 @@ let str3 = str1 + str2
 // console.log(+true);//1
 
 let gameCounter = 100
-gameCounter++;
-console.log(gameCounter);
+// gameCounter++;
+// console.log(gameCounter);
 
-++gameCounter;
-console.log(gameCounter);
+// ++gameCounter;
+// console.log(gameCounter);
 
 /*
 
@@ -87,4 +87,26 @@ If used prefix, with operator before operand(for example, ++x), the increment op
 */
 
 
+let x = 3;
+const y = x++;
+
+console.log(`x:${x}, y:${y}`);
+
+/*
+x starts at 3.
+y is assigned the value of x before x is incremented.
+    So, y is 3 and then x becomes 4.
+*/
+
+let a = 3;
+const b = ++a;
+
+console.log(`a:${a}, b:${b}`);
+// Expected output: "a:4, b:4"
+
+/*
+a starts at 3.
+a is incremented first, so it becomes 4.
+b is assigned the value of a after it has been incremented.
+So, both a and b are 4.*/
 
