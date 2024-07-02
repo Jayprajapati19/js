@@ -40,7 +40,10 @@ const myFunction = function () {
     console.log("hello jay");
 }
 
-console.log(typeof OutsideTemp);
+// console.log(typeof OutsideTemp);
+console.log(typeof myFunction);
+
+
 
 
 /*
