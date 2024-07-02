@@ -32,10 +32,11 @@ let booleanIsLoggedIn = Boolean(isLoggedIn)
 
 
 let someNumber = 33
-
 let stringNum = String(someNumber)
 
 // console.log(typeof stringNum);
-
 // console.log(stringNum);
+
+// ++++++  Operations +++++++
+
 
