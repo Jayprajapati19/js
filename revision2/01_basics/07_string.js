@@ -48,9 +48,14 @@ const newStr1 = "  jay prajapati"
 // console.log(newStr1);
 // console.log(newStr1.trim());
 
-const url = "https://jay.com/jayp%20meladi"
+const url = "https://jay-com-jayp-0meladi"
 
-console.log(url.replace("%20", "-"))
+// console.log(url.replace("%20", "-"))
+
+// console.log(url.includes('jay'))
+// console.log(url.includes('jd'))
+
+// console.log(url.split('-', '8'));
 
 
 
