@@ -31,8 +31,29 @@ const gamaName = new String("jay")
 
 
 
-const str = "jayprajapati"
-console.log(str.slice(1, 5));
+const str = "jay-prajapati"
+// console.log(str.slice(1, 5))
+
+// const updated = str.replace("jay", "tiko")
+// console.log(updated);
+
+const str2 = str.substring(0, 3)
+// console.log(str2);
+
+const newStr = str.slice(-7, -3)
+// console.log(newStr);
+
+const newStr1 = "  jay prajapati"
+
+// console.log(newStr1);
+// console.log(newStr1.trim());
+
+const url = "https://jay.com/jayp%20meladi"
+
+console.log(url.replace("%20", "-"))
+
+
+
 
 
 
