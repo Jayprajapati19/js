@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dungeon Crawler RPG</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #f0f0f0;
+        }
+        #game-container {
+            display: flex;
+            flex-wrap: wrap;
+            width: 600px;
+            height: 600px;
+        }
+        .tile {
+            width: 50px;
+            height: 50px;
+            border: 1px solid #ccc;
+            box-sizing: border-box;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        .player {
+            background-color: #f00;
+        }
+        .enemy {
+            background-color: #00f;
+        }
+        .item {
+            background-color: #0f0;
+        }
+        .message {
+            position: absolute;
+            top: 10px;
+            left: 10px;
+            padding: 10px;
+            background-color: rgba(255, 255, 255, 0.9);
+            border: 1px solid #ccc;
+            display: none;
+        }
+        .button {
+            padding: 5px 10px;
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            cursor: pointer;
+            margin-top: 5px;
+        }
+    </style>
+</head>
+<body>
+    <div id="game-container"></div>
+    <div id="message-box" class="message"></div>
+
+    <script>
+        // Define game variables
+        const mapSize = 10; // Example: 10x10 grid
+        let playerPosition = { x: 0, y: 0 }; // Start position
+        let map = generateMap(mapSize);
+        let playerStats = {
+            health: 100,
+            attack: 10,
+            level: 1,
+            experience: 0,
+            nextLevelExp: 100
+        };
+
+        // Function to generate map with random enemies and items
+        function generateMap(size) {
+            let map = [];
+            for (let y = 0; y < size; y++) {
+                let row = [];
+                for (let x = 0; x < size; x++) {
+                    // Generate random tiles (80% empty, 10% enemy, 10% item)
+                    let tileType = Math.random();
+                    if (tileType < 0.1) {
+                        row.push({ type: 'enemy' });
+                    } else if (tileType < 0.2) {
+                        row.push({ type: 'item' });
+                    } else {
+                        row.push({ type: 'empty' });
+                    }
+                }
+                map.push(row);
+            }
+            // Place player at starting position
+            map[0][0] = { type: 'player' };
+            return map;
+        }
+
+        // Function to render map
+        function renderMap() {
+            const gameContainer = document.getElementById('game-container');
+            gameContainer.innerHTML = ''; // Clear previous map
+            for (let y = 0; y < mapSize; y++) {
+                for (let x = 0; x < mapSize; x++) {
+                    let tile = document.createElement('div');
+                    tile.classList.add('tile');
+                    // Add different classes for player, enemies, items, etc.
+                    if (map[y][x].type === 'player') {
+                        tile.classList.add('player');
+                    } else if (map[y][x].type === 'enemy') {
+                        tile.classList.add('enemy');
+                    } else if (map[y][x].type === 'item') {
+                        tile.classList.add('item');
+                    }
+                    // Append tile to game container
+                    gameContainer.appendChild(tile);
+                }
+            }
+        }
+
+        // Event listener for keyboard input (movement)
+        document.addEventListener('keydown', function(event) {
+            // Handle arrow keys or WASD for movement
+            switch (event.key) {
+                case 'ArrowUp':
+                case 'w':
+                    movePlayer(0, -1); // Move up
+                    break;
+                case 'ArrowDown':
+                case 's':
+                    movePlayer(0, 1); // Move down
+                    break;
+                case 'ArrowLeft':
+                case 'a':
+                    movePlayer(-1, 0); // Move left
+                    break;
+                case 'ArrowRight':
+                case 'd':
+                    movePlayer(1, 0); // Move right
+                    break;
+            }
+            renderMap(); // Update map after movement
+        });
+
+        // Function to handle player movement
+        function movePlayer(dx, dy) {
+            let newX = playerPosition.x + dx;
+            let newY = playerPosition.y + dy;
+            // Check if new position is within bounds and is walkable (not a wall, etc.)
+            if (newX >= 0 && newX < mapSize && newY >= 0 && newY < mapSize) {
+                // Handle encounters
+                let tileType = map[newY][newX].type;
+                switch (tileType) {
+                    case 'enemy':
+                        handleEnemyEncounter();
+                        break;
+                    case 'item':
+                        handleItemEncounter();
+                        break;
+                    case 'empty':
+                        showMessage('You move to an empty tile.');
+                        break;
+                }
+                // Update player position on map
+                map[playerPosition.y][playerPosition.x] = { type: 'empty' };
+                playerPosition.x = newX;
+                playerPosition.y = newY;
+                map[playerPosition.y][playerPosition.x] = { type: 'player' };
+            }
+        }
+
+        // Function to handle enemy encounter
+        function handleEnemyEncounter() {
+            let enemyHealth = 50; // Example enemy health
+            showMessage('You encounter an enemy!');
+            // Simulate battle (simplified)
+            while (playerStats.health > 0 && enemyHealth > 0) {
+                // Player attacks enemy
+                enemyHealth -= playerStats.attack;
+                showMessage(`You attack the enemy for ${playerStats.attack} damage.`);
+                if (enemyHealth <= 0) {
+                    showMessage('You defeated the enemy!');
+                    // Gain experience and check for level up
+                    playerStats.experience += 50;
+                    if (playerStats.experience >= playerStats.nextLevelExp) {
+                        levelUp();
+                    }
+                    map[playerPosition.y][playerPosition.x] = { type: 'empty' }; // Remove enemy from map
+                    break;
+                }
+                // Enemy attacks player
+                playerStats.health -= 10; // Example enemy attack damage
+                showMessage(`The enemy attacks you for 10 damage.`);
+            }
+            if (playerStats.health <= 0) {
+                showMessage('Game over. You were defeated by the enemy.');
+                // Optionally: Restart game or show game over screen
+            }
+        }
+
+        // Function to handle item encounter
+        function handleItemEncounter() {
+            showMessage('You found an item!'); // Example message
+            // Implement logic to handle item collection and inventory
+        }
+
+        // Function to handle leveling up
+        function levelUp() {
+            playerStats.level++;
+            playerStats.health += 20; // Example health increase on level up
+            playerStats.attack += 5; // Example attack increase on level up
+            playerStats.nextLevelExp *= 2; // Example exponential growth for next level
+            showMessage(`Level up! You are now level ${playerStats.level}.`);
+        }
+
+        // Function to display messages in message box
+        function showMessage(message) {
+            const messageBox = document.getElementById('message-box');
+            messageBox.textContent = message;
+            messageBox.style.display = 'block';
+            setTimeout(() => {
+                messageBox.style.display = 'none';
+            }, 3000); // Hide message after 3 seconds
+        }
+
+        // Initial game setup
+        renderMap();
+    </script>
+</body>
+</html>
