@@ -29,7 +29,20 @@ function addTwoNumbers(num1, num2) {
 
 const result = addTwoNumbers(3, 9)
 
-console.log("Result: ", result);
+// console.log("Result: ", result);
+
+function loginUserMessage(username = "sam") {
+    if (!username) {
+        console.log("Please Enter a User Name");
+        return
+
+    }
+    return `${username} just logged in`
+}
+
+// console.log(loginUserMessage("jayy"))
+console.log(loginUserMessage("gudu"))
+
 
 
 
