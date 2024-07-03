@@ -49,10 +49,40 @@ const MYn2 = myArr.splice(1, 3)
 //
 // console.log(MYn2);
 
+const frieds = ["jay", "tiko", "thor"]
+const heros = ["developer", "batman", "falsh"]
+
+// frieds.push(heros)
+
+// console.log(frieds);
+// console.log(frieds[3][1]);
+
+// const allhero = frieds.concat(heros)
+// console.log(allhero);
+
+// const allNewhros = [...frieds, ...heros] //spreate ope
+// console.log(allNewhros);
+
+const anotherArr = [1, 2, 3, 4, [5, 6, 7], [8, 9, [3, 4, 5, 19]]]
+
+const real = anotherArr.flat(Infinity)
+// console.log(real);
 
 
+// console.log(Array.isArray("jay"))
+// console.log(Array.from("jay")) //conveert array
 
+// console.log(Array.from({
+//     name: "jay"
+// })) //intresting
 
+// console.log(Array.from("jay"))
+
+let score1 = 100
+let score2 = 200
+let score3 = 300
+
+console.log(Array.of(score1, score2, score3));
 
 
 
