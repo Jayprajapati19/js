@@ -19,11 +19,31 @@ const userEmail = []
 //     console.log("Array is Empty");
 // }
 
-const emptyObj = {}
+// const emptyObj = {}
 
-if (Object.keys(emptyObj).length === 0) {
-    console.log("Object is Empty");
-}
+// if (Object.keys(emptyObj).length === 0) {
+//     console.log("Object is Empty");
+// }
+
+// Nullish Coalescing Operator(??) : null, undefined
+
+let val1;
+
+// val1 = 5 ?? 10
+
+// val1 = null ?? 10
+
+// val1 = undefined ?? 19
+
+// val1 = null ?? 10 ?? 50
+
+
+
+
+
+console.log(val1);
+
+
 
 
 
