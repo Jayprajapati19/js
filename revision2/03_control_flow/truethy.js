@@ -49,12 +49,3 @@ const iceTeaPrice = 100
 
 
 
-
-
-
-
-
-
-
-
-
