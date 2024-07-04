@@ -24,9 +24,30 @@ const user = {
 // one()
 
 
-const chai = () => {
-    let username = "jay"
-    console.log(this.username);
-}
+// const chai = () => {
+//     let username = "jay"
+//     console.log(this);
+// }
 
-chai()
+// chai()
+
+// ++++++++++++++++++++++++++++++++++++
+
+// const addTwo = (num1, num2) => {
+//     return num1 + num2;
+// }
+
+
+// const addTwo = (num1, num2) => num1 + num2;
+// const addTwo = (num1, num2) => (num1 + num2);
+
+const addTwo = (num1, num2) => ({ username: "jay" });
+
+console.log(addTwo(3, 4))
+
+
+
+// const myArr = [2, 3, 4, 5, 6]
+// myArr.forEach(() => {
+
+// })
