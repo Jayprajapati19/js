@@ -24,7 +24,6 @@ const greetings = "Hello world!"
 //  it is unique in the Map's collection
 
 const map = new Map()
-
 map.set('IN', 'India')
 map.set('USA', 'Unites State Of America')
 map.set('JP', 'Japan')

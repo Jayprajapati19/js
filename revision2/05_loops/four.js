@@ -11,10 +11,21 @@ const myObj = {
 
 const programming = ['js', 'cpp', 'rb', 'py', 'java']
 
-for (const key in programming) {
+// for (const key in programming) {
+//     console.log(programming[key]);
+// }
+
+// map is not itretable
+
+const map = new Map()
+map.set('IN', 'India')
+map.set('USA', 'Unites State Of America')
+map.set('JP', 'Japan')
+map.set('FR', 'France')
+map.set('IN', 'India')
+
+for (const key in map) {
     console.log(key);
+
 }
-
-
-
 
