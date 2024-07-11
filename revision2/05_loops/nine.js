@@ -8,7 +8,28 @@ const myNums = [1, 2, 3]
 // }, 0)
 
 
-const myTotal = myNums.reduce((acc, curr) => acc + curr, 0)
+// const myTotal = myNums.reduce((acc, curr) => acc + curr, 0)
 
-console.log(myTotal);
+// console.log(myTotal);
 
+const shoppingCart = [
+    {
+        itemName: "js ",
+        price: 2999,
+    },
+    {
+        itemName: "python ",
+        price: 9999,
+    },
+    {
+        itemName: "mobile dev ",
+        price: 5999,
+    },
+    {
+        itemName: "data sciences ",
+        price: 12999,
+    },
+]
+
+const pricetoPay = shoppingCart.reduce((acc, item) => acc + item.price, 0)
+console.log(pricetoPay);
