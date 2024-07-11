@@ -85,9 +85,10 @@ const books = [
 ];
 
 
-const userBooks = books.filter((bk) => bk.year === 1960)
+// const userBooks = books.filter((bk) => bk.year === 1960)
+// const userBooks = books.filter((bk) => bk.publish >= "Signet Classics")
+const userBooks = books.filter((bk) => bk.year >= 1949 && bk.genre === "Coming-of-Age Fiction")
 
 console.log(userBooks);
 console.log(userBooks.length);
 
-// 8:40
