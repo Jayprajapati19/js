@@ -24,6 +24,30 @@
    addLanguage('Java')
    addLanguage('TypeScript')
 
+   // +++++++ Method - 2  +++++++++
+
+   function addOptiLang(langName) {
+      const li = document.createElement('li')
+      li.appendChild(document.createTextNode(langName))
+      document.querySelector('.language').appendChild(li)
+   }
+
+   addOptiLang("GoLang")
+
+
+   // Edit
+
+   const secondLang = document.querySelector("li:nth-child(2)")
+   // secondLang.innerHTML = "Mojo"
+   // console.log(secondLang);
+   const newLi = document.createElement('li')
+   newLi.textContent = "Mojo"
+   secondLang.replaceWith(newLi)
+   // console.log(newLi);
+
+
+
+
 
 </script>
 
