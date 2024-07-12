@@ -19,7 +19,6 @@ form.addEventListener('submit', (e) => {
 
    //ass ->  Under Weight = Less than 18.6 , Normal Range = 18.6 and 24.9 , Overweight = Greater than 24.9  based on this conditon print output 
 
-
 })
 
 
