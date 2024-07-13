@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+   <meta charset="UTF-8">
+   <title>Document</title>
+</head>
+
+<body>
+   <h1>Jay || JavaScript</h1>
+   <button id="stop">Stop</button>
+   <button id="start">Start</button>
+
+</body>
+<script>
+
+   const sayDate = function (str) {
+      console.log(str, Date.now());
+   }
+
+
+   const intervalId = setInterval(sayDate, 1000, "hi..")
+
+   clearInterval(intervalId)
+
+   // assignment -> clicked start and stop button to ouccured event start printting and stop printing
+
+</script>
+
+</html>
