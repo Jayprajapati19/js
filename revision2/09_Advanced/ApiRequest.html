@@ -3,33 +3,75 @@
 
 <head>
    <meta charset="UTF-8">
-   <title>API Requesst || XMLHttpRequest</title>
-   <!-- this key -> refere current context -->
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <title>GitHub User Info</title>
+   <style>
+      body {
+         background-color: #212121;
+         color: #fff;
+         display: flex;
+         justify-content: center;
+         align-items: center;
+         height: 100vh;
+         margin: 0;
+         font-family: Arial, sans-serif;
+      }
+
+      .card {
+         background-color: #333;
+         border-radius: 10px;
+         padding: 20px;
+         text-align: center;
+         width: 300px;
+      }
+
+      .avatar {
+         border-radius: 50%;
+         width: 100px;
+         height: 100px;
+         margin-bottom: 15px;
+      }
+
+      .button {
+         background-color: #6200ea;
+         color: white;
+         border: none;
+         padding: 10px 20px;
+         font-size: 16px;
+         cursor: pointer;
+         border-radius: 5px;
+      }
+   </style>
 </head>
 
-<body style="background-color: #212121;">
+<body>
+   <div class="card">
+      <img src="https://via.placeholder.com/100" alt="User Avatar" class="avatar" id="avatar">
+      <h2 id="username">GitHub Username</h2>
+      <p>Public Repositories: <span id="repo-count">0</span></p>
+      <p>Followers: <span id="followers-count">0</span></p>
+      <button class="button" id="fetchDataButton">Fetch Data</button>
+   </div>
 
+   <script>
+      document.getElementById('fetchDataButton').addEventListener('click', function () {
+         const requestURL = "https://api.github.com/users/Jayprajapati19";
+         const xhr = new XMLHttpRequest();
+         xhr.open('GET', requestURL);
 
+         xhr.onreadystatechange = function () {
+            if (xhr.readyState === 4) {
+               const data = JSON.parse(xhr.responseText);
+               document.getElementById('avatar').src = data.avatar_url;
+               document.getElementById('username').textContent = data.login;
+               document.getElementById('repo-count').textContent = data.public_repos;
+               document.getElementById('followers-count').textContent = data.followers;
+            }
+         };
+
+         xhr.send();
+      });
+   </script>
 </body>
-<script>
-   const requestURL = "https://api.github.com/users/Jayprajapati19"
-
-   const xhr = new XMLHttpRequest()
-
-   xhr.open('GET', requestURL)
-   xhr.onreadystatechange = function () {
-      console.log(xhr.readyState)
-      if (xhr.readyState === 4) {
-         const data = JSON.parse(this.responseText)
-         console.log(typeof data);
-         console.log(data.public_repos);
-
-      }
-   }
-   xhr.send();
-
-
-</script>
-
 
 </html>
