@@ -43,10 +43,5 @@ console.log(userOne.constructor);
 // intanceof method
 
 
-
-
-
-
-
-
+// javascript kaa default behavoir is prototypel behaivour
 
