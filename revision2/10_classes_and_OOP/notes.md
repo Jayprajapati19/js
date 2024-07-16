@@ -4,7 +4,7 @@
 
 ### OOPs Concept in JavaScript
 
-Object | Classes | Encapsulation | Abstraction | Inheritance | Polymorphism
+Encapsulation | Abstraction | Inheritance | Polymorphism
 
 ### JavaScript does have classes. Class syntax was introduced in ECMAScript 2015 (ES6) as a way to create blueprints for objects, making it easier to define object-oriented programming patterns in JavaScript. Classes provide a more familiar syntax for developers coming from languages like Java or C++, though under the hood, JavaScript's classes are primarily syntactic sugar over its existing prototype-based inheritance model.
 
@@ -45,3 +45,29 @@ Object | Classes | Encapsulation | Abstraction | Inheritance | Polymorphism
 ## Polymorphism
 
 #### Polymorphism is one of the core concepts of object-oriented programming languages where poly means many and morphism means transforming one form into another. Polymorphism means the same function with different signatures is called many times. In real life, for example, a boy at the same time may be a student, a class monitor, etc. So a boy can perform different operations at the same time. This is called polymorphism.
+
+---
+
+## 1. Encapsulation:
+
+#### Definition: Encapsulation is the bundling of data (variables) and methods (functions) that operate on the data into a single unit (class in JavaScript).
+
+#### Example in JavaScript: Using classes to encapsulate data and methods ensures that data is accessed and manipulated through defined methods, maintaining control over how data is modified or accessed.
+
+## 2. Abstraction:
+
+#### Definition: Abstraction focuses on hiding the complex implementation details of methods and providing only the essential features to the outside world.
+
+#### Example in JavaScript: Using methods to perform complex operations internally while exposing simpler interfaces to users.
+
+## 3. Inheritance:
+
+#### Definition: Inheritance allows one class (subclass) to inherit properties and methods from another class (superclass), promoting code reuse and creating a hierarchy of classes.
+
+#### Example in JavaScript: Using extends to inherit properties and methods from a parent class.
+
+## 4. Polymorphism:
+
+#### Definition: Polymorphism allows methods to behave differently based on the object that calls them, providing a way to override methods in subclasses to achieve different behaviors.
+
+#### Example in JavaScript: Method overriding in subclasses to customize behavior while maintaining a consistent interface.
