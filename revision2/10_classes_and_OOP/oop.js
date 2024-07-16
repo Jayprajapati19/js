@@ -26,13 +26,22 @@ function User(username, loginCount, isLoggedIn) {
    this.loginCount = loginCount
    this.isLoggedIn = isLoggedIn
 
+   this.greetings = function () {
+      console.log(`Welcome ${this.username}`);
+   }
+
    return this
 }
 
 const userOne = new User("jay", 12, true)
 const userTwo = new User("diyu", 11, false)
-console.log(userOne);
-console.log(userTwo);
+console.log(userOne.constructor);
+// console.log(userTwo);
+
+// new keyword use karte hai tab empty object create hota hai, jikso instance bola jata hai, construcotr function call hota hai new keyword ke karan  , argu ne pack kre inject kre, miljata hai function ke under
+
+// intanceof method
+
 
 
 
