@@ -68,8 +68,3 @@ String.prototype.truelength = function () {
 anotherUsername.truelength()
 "jay".truelength()
 "icetea".truelength()
-
-
-
-
-
