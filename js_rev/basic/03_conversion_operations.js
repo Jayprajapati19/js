@@ -28,7 +28,7 @@ console.log(valueInNum);
 let LoggedIn = "";
 
 let boolIsLoggedIn = Boolean(LoggedIn);
-console.log(boolIsLoggedIn);
+// console.log(boolIsLoggedIn);
 
 
 // 1->true;  0->false
@@ -36,5 +36,29 @@ console.log(boolIsLoggedIn);
 // "jay" -> true 
 
 
+// let SomeNum =19;
+// console.log(typeof SomeNum);
 
+
+// let StrNum=String(SomeNum);
+// console.log(typeof StrNum);
+
+
+// +++++++++++++++++++++++++++++ Operations +++++++++++++++++++++++++++++++
+ 
+let value =3;
+let negValue = -value;
+// console.log(negValue);
+
+/*
+
+console.log(2+2);
+console.log(2-2);
+console.log(2**2); //for Power  
+console.log(2/2);
+console.log(2%2);//reminder
+*/
+
+
+let str1 = "hello"; 
 
