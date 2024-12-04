@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Animated Date on Click</title>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      body {
+        width: 100vw;
+        height: 100vh;
+        background: linear-gradient(120deg, #ff7eb3, #ff758c);
+        overflow: hidden;
+        cursor: pointer;
+      }
+
+      .time-container {
+        position: absolute;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-family: Arial, sans-serif;
+      }
+
+      .circle {
+        position: absolute;
+        width: 100px;
+        height: 100px;
+        background: rgba(255, 255, 255, 0.9);
+        border-radius: 50%;
+        animation: expand-circle 0.8s ease-out forwards;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+
+      .date {
+        font-size: 14px;
+        font-weight: bold;
+        color: #333;
+        animation: fade-in 0.8s ease-out;
+      }
+
+      @keyframes expand-circle {
+        0% {
+          transform: scale(0);
+          opacity: 1;
+        }
+        100% {
+          transform: scale(1);
+          opacity: 0.9;
+        }
+      }
+
+      @keyframes fade-in {
+        from {
+          opacity: 0;
+        }
+        to {
+          opacity: 1;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <script>
+      document.body.addEventListener("click", (e) => {
+        // Get the current date
+        const now = new Date();
+        const date = now.toLocaleDateString();
+
+        // Create a container for the date
+        const container = document.createElement("div");
+        container.className = "time-container";
+        container.style.left = `${e.clientX - 50}px`; // Center the circle
+        container.style.top = `${e.clientY - 50}px`; // Center the circle
+
+        // Create the circle
+        const circle = document.createElement("div");
+        circle.className = "circle";
+
+        // Create the date text
+        const dateText = document.createElement("div");
+        dateText.className = "date";
+        dateText.textContent = date;
+
+        // Append date text to circle
+        circle.appendChild(dateText);
+
+        // Append circle to container
+        container.appendChild(circle);
+        document.body.appendChild(container);
+
+        // Remove elements after animation
+        setTimeout(() => {
+          container.remove();
+        }, 2000);
+      });
+    </script>
+  </body>
+</html>

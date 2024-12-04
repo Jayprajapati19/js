@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Animated Time on Click</title>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      body {
+        width: 100vw;
+        height: 100vh;
+        background: linear-gradient(120deg, #00c6ff, #0072ff);
+        overflow: hidden;
+        cursor: pointer;
+      }
+
+      .time-container {
+        position: absolute;
+        text-align: center;
+        font-family: Arial, sans-serif;
+      }
+
+      .circle {
+        position: absolute;
+        width: 100px;
+        height: 100px;
+        background: rgba(255, 255, 255, 0.8);
+        border-radius: 50%;
+        animation: expand-circle 0.8s ease-out forwards;
+        transform-origin: center;
+      }
+
+      .time {
+        font-size: 18px;
+        font-weight: bold;
+        color: #333;
+        animation: fade-in 0.8s ease-out;
+      }
+
+      .column {
+        position: absolute;
+        width: 10px;
+        background: rgba(255, 255, 255, 0.8);
+        animation: grow-column 0.8s ease-out forwards;
+      }
+
+      @keyframes expand-circle {
+        0% {
+          transform: scale(0);
+          opacity: 1;
+        }
+        100% {
+          transform: scale(1);
+          opacity: 0.7;
+        }
+      }
+
+      @keyframes fade-in {
+        from {
+          opacity: 0;
+        }
+        to {
+          opacity: 1;
+        }
+      }
+
+      @keyframes grow-column {
+        0% {
+          height: 0;
+          opacity: 1;
+        }
+        100% {
+          height: 150px;
+          opacity: 0.8;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <script>
+      document.body.addEventListener("click", (e) => {
+        // Get the current time
+        const now = new Date();
+        const time = now.toLocaleTimeString();
+
+        // Create a container for the time
+        const container = document.createElement("div");
+        container.className = "time-container";
+        container.style.left = `${e.clientX}px`;
+        container.style.top = `${e.clientY}px`;
+
+        // Create the circle
+        const circle = document.createElement("div");
+        circle.className = "circle";
+
+        // Create the column
+        const column = document.createElement("div");
+        column.className = "column";
+        column.style.left = `${e.clientX - 5}px`; // Adjust for center alignment
+        column.style.top = `${e.clientY}px`;
+
+        // Create the time text
+        const timeText = document.createElement("div");
+        timeText.className = "time";
+        timeText.textContent = time;
+
+        // Append elements
+        container.appendChild(circle);
+        container.appendChild(timeText);
+        document.body.appendChild(container);
+        document.body.appendChild(column);
+
+        // Remove elements after animation
+        setTimeout(() => {
+          container.remove();
+          column.remove();
+        }, 2000);
+      });
+    </script>
+  </body>
+</html>
