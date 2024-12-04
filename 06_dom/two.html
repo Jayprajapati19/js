@@ -11,10 +11,33 @@
       <div class="day">Wednesday</div>
       <div class="day">Thursday</div>
     </div>
+
+    <!-- Comment -->
   </body>
 
   <script>
     const parent = document.querySelector(".parent");
-    console.log(parent);
+
+    // console.log(parent);
+    // console.log(parent.children);
+    // console.log(parent.children[0].innerHTML);
+
+    // for (let i = 0; i < parent.children.length; i++) {
+    //   console.log(parent.children[i].innerHTML);
+    // }
+
+    parent.children[1].style.color = "orange";
+    parent.children[2].style.color = "yellow";
+    // console.log(parent.firstElementChild); //return first value in div
+
+    // console.log(parent.lastElementChild); //return last value in div
+
+    const dayOne = document.querySelector(".day");
+
+    // console.log(dayOne);
+    // console.log(dayOne.parentElement); //show the parent element
+    // console.log(dayOne.nextElementSibling);
+
+    console.log("NODES: ", parent.childNodes);
   </script>
 </html>
