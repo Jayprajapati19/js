@@ -84,38 +84,31 @@
   <body>
     <script>
       document.body.addEventListener("click", (e) => {
-        // Get the current time
         const now = new Date();
         const time = now.toLocaleTimeString();
 
-        // Create a container for the time
         const container = document.createElement("div");
         container.className = "time-container";
         container.style.left = `${e.clientX}px`;
         container.style.top = `${e.clientY}px`;
 
-        // Create the circle
         const circle = document.createElement("div");
         circle.className = "circle";
 
-        // Create the column
         const column = document.createElement("div");
         column.className = "column";
         column.style.left = `${e.clientX - 5}px`; // Adjust for center alignment
         column.style.top = `${e.clientY}px`;
 
-        // Create the time text
         const timeText = document.createElement("div");
         timeText.className = "time";
         timeText.textContent = time;
 
-        // Append elements
         container.appendChild(circle);
         container.appendChild(timeText);
         document.body.appendChild(container);
         document.body.appendChild(column);
 
-        // Remove elements after animation
         setTimeout(() => {
           container.remove();
           column.remove();
